@@ -9,23 +9,27 @@ fetch(`https://api.github.com/repos/${owner}/${repository}/contents/.angular-cli
     }
 
     const actions = document.querySelector('.pagehead-actions');
+    if (!actions) {
+      return;
+    }
+
     const newElement = document.createElement('li');
     const newButton = document.createElement('a');
     const newIcon = document.createElement('img');
-    const newSpan = document.createElement('span');
+    const newText = document.createTextNode('StackBlitz');
 
-    newSpan.textContent = 'StackBlitz';
-    newIcon.src = browser.extension.getURL('lightning.svg');
-    newIcon.style.width = '1.3em';
+    newIcon.src = chrome.extension.getURL('lightning.svg');
+    newIcon.style.height = '15px';
+    newIcon.style.width = '15px';
+    newIcon.style.cssFloat = 'left';
+    newIcon.style.marginTop = '2px';
 
     newButton.classList.add('btn', 'btn-sm');
     newButton.href = `https://stackblitz.com/github/${owner}/${repository}`;
     newButton.target = '_blank';
-    newButton.style.display = 'flex';
-    newButton.style.alignContent = 'center';
 
     newButton.appendChild(newIcon);
-    newButton.appendChild(newSpan);
+    newButton.appendChild(newText);
 
     newElement.appendChild(newButton);
     actions.appendChild(newElement);
