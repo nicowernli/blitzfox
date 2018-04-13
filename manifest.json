@@ -1,0 +1,28 @@
+{
+
+  "manifest_version": 2,
+  "name": "Blitzfox",
+  "version": "1.1",
+  "description": "Adds stackblitz button to Angular CLI projects on github.com.",
+
+  "icons": {
+    "256": "icon-stackblitz.png"
+  },
+
+  "permissions": [
+    "*://api.github.com/*"
+  ],
+
+  "web_accessible_resources": [
+    "icon-stackblitz.jpg",
+    "lightning.svg"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.github.com/*"],
+      "js": ["blitzbutton.js"]
+    }
+  ]
+
+}
