@@ -5,7 +5,6 @@ const [ owner, repository ] = location.href
 fetch(`https://api.github.com/repos/${owner}/${repository}/contents/.angular-cli.json`)
   .then(response => {
     if (response.status !== 200) {
-      console.info('This is not an Angular CLI repository');
       return;
     }
 
@@ -31,4 +30,4 @@ fetch(`https://api.github.com/repos/${owner}/${repository}/contents/.angular-cli
     newElement.appendChild(newButton);
     actions.appendChild(newElement);
   })
-  .catch(err => {});
+  .catch(console.error);
